@@ -1,0 +1,29 @@
+service: appsync-backend
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  runtime: nodejs16.x
+
+plugins:
+  - serverless-appsync-plugin
+
+package:
+  exclude:
+    - package.json
+    - package-lock.json
+
+custom:
+  appSync:
+    - ${file(appsync-api.yml)}
+# you can add CloudFormation resource templates here
+#resources:
+#  Resources:
+#    NewResource:
+#      Type: AWS::S3::Bucket
+#      Properties:
+#        BucketName: my-new-bucket
+#  Outputs:
+#     NewOutput:
+#       Description: "Description for the output"
+#       Value: "Some output value"
